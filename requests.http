@@ -1,0 +1,17 @@
+### Example (should return: CZE, AUT, ITA)
+GET http://localhost:8080/routing/CZE/ITA
+
+### Non-existing countries
+GET http://localhost:8080/routing/XXX/YYY
+
+### Same countries
+GET http://localhost:8080/routing/CZE/CZE
+
+### Short route
+GET http://localhost:8080/routing/CZE/AUT
+
+### Long route
+GET http://localhost:8080/routing/NOR/ZAF
+
+### Impossible route
+GET http://localhost:8080/routing/CZE/MEX
