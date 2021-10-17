@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Bean;
 
 @Slf4j
 @SpringBootApplication
-public class PwcApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(PwcApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Bean

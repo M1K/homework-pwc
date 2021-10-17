@@ -1,2 +1,2 @@
 pwc:
-  countries-filepath: src/main/resources/data/countries.json
+  countries-filepath: data/countries.json

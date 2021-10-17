@@ -1,4 +1,15 @@
-### Backend Developer Test
+# Start application
+Download project and open it (homework-pwc) and build from command line:
+```
+mvn clean install
+```
+Open target directory (homework-pwc/target) and run jar file
+```
+java -jar homework-pwc-1.0.0-SNAPSHOT.jar
+```
+Or simply start from IDE (Application.java)
+
+## Backend Developer Test
 Your task is to create a simple Spring Boot service, that is able to calculate any possible land route from one country to another. 
 The objective is to take a list of country data in JSON format and calculate the route by utilizing individual countries border information.
 Specifications:
@@ -10,7 +21,7 @@ Specifications:
  - If there is no land crossing, the endpoint returns HTTP 400 
  - Countries are identified by cca3 field in country data 
 
-#### HTTP request sample (land route from Czech Republic to Italy):
+### HTTP request sample (land route from Czech Republic to Italy):
 ```http request
 GET /routing/CZE/ITA HTTP/1.0
 ```
@@ -20,17 +31,6 @@ GET /routing/CZE/ITA HTTP/1.0
 }
 ```
 
-#### Expected deliveries:
+### Expected deliveries:
     1. Source code
     2. Instructions on how to build and run the application
-
-
-#### Start application
-Download project and open its directory (homework-pwc) and build from command line:
-```
-mvn clean install
-```
-Open target directory (homework-pwc/target) and run jar file
-```
-java -jar homework-pwc-0.0.1-SNAPSHOT.jar
-```

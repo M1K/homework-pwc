@@ -5,14 +5,18 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.pwc.model.Country;
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
+@Slf4j
 @UtilityClass
 public class JsonUtils {
 
@@ -27,14 +31,22 @@ public class JsonUtils {
 
     @SneakyThrows
     public static List<Country> countriesFromFile(String filepath) {
+        InputStream inputStream = JsonUtils.class.getClassLoader().getResourceAsStream(filepath);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("File not found: " + filepath);
+        }
+
         StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
+        try (InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+                BufferedReader reader = new BufferedReader(streamReader)) {
             String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line);
             }
         }
-        return OBJECT_MAPPER.readValue(sb.toString(), new TypeReference<>() {
+
+        String content = sb.toString();
+        return OBJECT_MAPPER.readValue(content, new TypeReference<>() {
         });
     }
 }
